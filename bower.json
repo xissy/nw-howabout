@@ -1,0 +1,27 @@
+{
+  "name": "nw-howabout-app",
+  "version": "0.0.1",
+  "authors": [
+    "Taeho Kim <xissysnd@gmail.com>"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "bootstrap": "~3.0.0",
+    "font-awesome": "~3.2.1",
+    "angular": "~1.0.8",
+    "angular-resource": "~1.0.8",
+    "angular-ui": "~0.4.0",
+    "html5shiv": "~3.6.2",
+    "flat-ui-official": "~2.1.1"
+  },
+  "devDependencies": {
+  }
+}

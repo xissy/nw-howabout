@@ -1,0 +1,47 @@
+{
+  "name": "nw-howabout",
+  "version": "0.0.1",
+  "description": "Neo-gen free music streaming player.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xissy/node-howabout.git"
+  },
+  "keywords": [
+    "music",
+    "mp3",
+    "download",
+    "stream",
+    "streaming",
+    "free"
+  ],
+  "author": "Taeho Kim <xissysnd@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xissy/node-howabout/issues"
+  },
+  "dependencies": {
+    "coffee-script": "~1.6.3",
+    "async": "~0.2.9"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "https://github.com/blai/grunt-contrib-watch/tarball/master",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-less": "~0.7.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-google-cdn": "~0.2.2",
+    "grunt-usemin": "~0.1.12",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-htmlmin": "~0.1.3",
+    "grunt-contrib-imagemin": "~0.2.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-cssmin": "~0.6.1",
+    "grunt-express-server": "~0.4.3",
+    "grunt-open": "~0.2.2"
+  }
+}
