@@ -230,6 +230,9 @@ module.exports = (grunt) ->
         'dist/styles/**/*.css'
         '!dist/styles/style.usemin.css'
       ]
+      webkit_releases: [
+        'webkitbuilds/releases'
+      ]
 
     nodewebkit:
       options:
@@ -286,5 +289,6 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'webkit', [
     'build:dist'
+    'clean:webkit_releases'
     'nodewebkit'
   ]
