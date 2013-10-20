@@ -126,6 +126,15 @@ module.exports = (grunt) ->
       dev: [ '.tmp/' ]
       dist: [ 'dist/' ]
 
+    nodewebkit:
+      options:
+        build_dir: 'webkitbuilds'
+        mac: true
+        win: true
+        linux32: false
+        linux64: false
+      src: [ 'dist/**/*' ]
+
 
   grunt.registerTask 'default', [
     'build'
@@ -151,4 +160,9 @@ module.exports = (grunt) ->
     'jade:dist'
     'less:dist'
     'copy:dist'
+  ]
+
+  grunt.registerTask 'build:webkit', [
+    'build:dist'
+    'nodewebkit'
   ]

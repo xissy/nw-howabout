@@ -1,4 +1,31 @@
 {
-  "name": "nw-howabout",
-  "main": "index.html"
+  "main": "index.html",
+  "name": "howabout",
+  "version": "0.0.1",
+  "description": "Neo-gen free music streaming player.",
+  "keywords": [
+    "music",
+    "mp3",
+    "download",
+    "stream",
+    "streaming",
+    "free"
+  ],
+  "window": {
+    "title": "HowAbout",
+    "toolbar": false,
+    "frame": true,
+    "width": 400,
+    "height": 600,
+    "position": "center",
+    "min_width": 400,
+    "min_height": 600,
+    "max_width": 400,
+    "max_height": 600
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "dependencies": {
+  }
 }
