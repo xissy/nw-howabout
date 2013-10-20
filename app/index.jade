@@ -2,6 +2,24 @@ doctype 5
 html(lang='en')
   head
     title HowAbout
-  body
+
+    // build:css styles/style.usemin.css
+    link(href='bower_components/bootstrap/dist/css/bootstrap.css', media='screen', rel='stylesheet', type='text/css')
+    link(href='bower_components/font-awesome/css/font-awesome.css', rel='stylesheet', type='text/css')
+    link(href='bower_components/flat-ui-official/css/flat-ui.css', rel='stylesheet', type='text/css')
+    link(href='styles/style.css', rel='stylesheet', type='text/css')
+    // endbuild
+  
+  body(ng-controller='MainController')
     h1 HowAbout
+
+    div(ng-view)
+
+    // build:js scripts/script.usemin.js
+    script(type='text/javascript', src='bower_components/jquery/jquery.js')
+    script(type='text/javascript', src='bower_components/bootstrap/dist/js/bootstrap.js')
+    script(type='text/javascript', src='bower_components/angular/angular.js')
+    script(type='text/javascript', src='bower_components/angular-resource/angular-resource.js')
+    script(type='text/javascript', src='scripts/app.js')
+    // endbuild
     

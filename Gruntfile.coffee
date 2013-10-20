@@ -34,6 +34,8 @@ module.exports = (grunt) ->
         ]
 
     jade:
+      options:
+        pretty: true
       dev:
         files: [
           expand: true
@@ -122,6 +124,48 @@ module.exports = (grunt) ->
           ]
         ]
 
+    cdnify:
+      dist:
+        html: [ 'dist/*.html' ]
+
+    useminPrepare:
+      html: [ 'dist/*.html' ]
+      options:
+        dest: 'dist/'
+
+    usemin:
+      html: [ 'dist/*.html' ]
+      options:
+        dirs: [ 'dist/' ]
+
+    htmlmin:
+      dist:
+        options:
+          removeCommentsFromCDATA: true
+          # https://github.com/yeoman/grunt-usemin/issues/44
+          collapseWhitespace: true
+          collapseBooleanAttributes: true
+          # removeAttributeQuotes: true
+          removeRedundantAttributes: true
+          useShortDoctype: true
+          removeEmptyAttributes: true
+          removeOptionalTags: true
+        files: [
+          expand: true
+          cwd: 'dist/'
+          src: [ '*.html', 'views/*.html' ]
+          dest: 'dist/'
+        ]
+
+    imagemin:
+      dist:
+        files: [
+          expand: true
+          cwd: 'app/images/'
+          src: '{,*/}*.{png,jpg,jpeg}'
+          dest: 'dist/images/'
+        ]
+
     clean: 
       dev: [ '.tmp/' ]
       dist: [ 'dist/' ]
@@ -160,6 +204,14 @@ module.exports = (grunt) ->
     'jade:dist'
     'less:dist'
     'copy:dist'
+    'useminPrepare'
+    'concat'
+    'uglify'
+    'cssmin'
+    'usemin'
+    'htmlmin:dist'
+    'cdnify'
+    'imagemin:dist'
   ]
 
   grunt.registerTask 'build:webkit', [

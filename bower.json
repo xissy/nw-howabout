@@ -19,7 +19,6 @@
     "angular": "~1.0.8",
     "angular-resource": "~1.0.8",
     "angular-ui": "~0.4.0",
-    "html5shiv": "~3.6.2",
     "flat-ui-official": "~2.1.1"
   },
   "devDependencies": {
