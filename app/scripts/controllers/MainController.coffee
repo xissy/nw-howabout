@@ -7,6 +7,7 @@ howaboutApp.controller 'MainController', [
   'RecommendedTrack'
   'PlayInfoSharedService'
   ($scope, $route, $http, Track, RecommendedTrack, playInfoSharedService) ->
+    console.log $route
 
     $scope.$on 'onPlayInfoBroadcast', ->
       lyricsHtml = playInfoSharedService.lyrics?.replace /\n/g, '<br />'
@@ -17,10 +18,8 @@ howaboutApp.controller 'MainController', [
         $('#lyrics-track').text "#{track.trackTitle} - #{track.artistName}"
         $('#lyrics').html lyricsHtml
       else
+        $('#lyrics-track').text ''
         $('#lyrics').text ''
-
-
-    $scope.onHeaderLoaded = ->
 
 
     $scope.onPlayerLoaded = ->
@@ -85,8 +84,18 @@ howaboutApp.controller 'MainController', [
     $scope.onClickAddLast = (track) ->
       $scope.tracks = []
 
+    
+    saveDialog = $('#saveDialog')
+    saveDialog.change (e) ->
+      saveFilePath = $(this).val()
+      playInfoSharedService.downloadTrack $scope.savingTrack, saveFilePath
+
+
     $scope.onClickDownload = (track) ->
-      $scope.tracks = []
+      $scope.savingTrack = track
+      
+      saveDialog.val null
+      saveDialog.trigger 'click'
 
 
     $scope.onSubmitSearch = (searchString) ->

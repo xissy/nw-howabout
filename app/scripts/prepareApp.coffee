@@ -1,5 +1,4 @@
 async = require 'async'
-GS = require 'grooveshark-streaming'
 
 
 # Services
