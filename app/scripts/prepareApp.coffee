@@ -1,5 +1,3 @@
-async = require 'async'
-
 
 # Services
 howaboutServices = angular.module 'howaboutServices', ['ng', 'ngResource']

@@ -133,6 +133,19 @@ module.exports = (grunt) ->
             '**/*'
           ]
         ]
+      dist_node_modules:
+        files: [
+          expand: true
+          dot: true
+          cwd: 'node_modules/'
+          dest: 'dist/node_modules/'
+          src: [
+            'async/**/*'
+            'grooveshark-streaming/**/*'
+            'request/**/*'
+            'ytdl/**/*'
+          ]
+        ]
 
     cdnify:
       dist:
@@ -268,6 +281,7 @@ module.exports = (grunt) ->
     'imagemin:dist'
     'clean:dist_original_scripts'
     'clean:dist_original_styles'
+    'copy:dist_node_modules'
   ]
 
   grunt.registerTask 'webkit', [

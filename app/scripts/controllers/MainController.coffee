@@ -7,7 +7,6 @@ howaboutApp.controller 'MainController', [
   'RecommendedTrack'
   'PlayInfoSharedService'
   ($scope, $route, $http, Track, RecommendedTrack, playInfoSharedService) ->
-    console.log $route
 
     $scope.$on 'onPlayInfoBroadcast', ->
       lyricsHtml = playInfoSharedService.lyrics?.replace /\n/g, '<br />'

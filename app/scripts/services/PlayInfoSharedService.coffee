@@ -15,9 +15,6 @@ howaboutServices.factory 'PlayInfoSharedService', [
         artistName: track.artistName
       ,
         ->
-          @lyrics = playInfo.lyrics
-          @track = track
-
           if not playInfo.groovesharkSongID?
             return ytdl.getInfo playInfo.youtubeMovieUrl, (err, youtubeInfo) ->
               return callback err  if err?
@@ -31,13 +28,13 @@ howaboutServices.factory 'PlayInfoSharedService', [
               if not streamUrl?
                 return callback new Error 'no youtube itag 18 streamUrl'
 
-              callback null, streamUrl
+              callback null, streamUrl, playInfo.lyrics
 
           GS.Grooveshark.getStreamingUrl playInfo.groovesharkSongID, (err, streamUrl) ->
             return callback err  if err?
             return callback new Error 'no grooveshark streamUrl'  if not streamUrl?
 
-            callback null, streamUrl
+            callback null, streamUrl, playInfo.lyrics
 
     sharedService =
       streamUrl: null
@@ -45,11 +42,13 @@ howaboutServices.factory 'PlayInfoSharedService', [
       track: null
 
       playTrack: (track) ->
-        getStreamUrl track, (err, streamUrl) =>
+        getStreamUrl track, (err, streamUrl, lyrics) =>
           if err?
             return alert "무료 음원을 찾을 수 없습니다.\n#{track.trackTitle} - #{track.artistName}"
           
           @streamUrl = streamUrl
+          @lyrics = lyrics
+          @track = track
           @broadcastPlayInfo()
 
 
@@ -64,10 +63,8 @@ howaboutServices.factory 'PlayInfoSharedService', [
           streamPipe = streamRequest.pipe fileStream
           
           fileStream.on 'finish', ->
-            console.log "다운로드가 완료되었습니다.\n#{track.trackTitle} - #{track.artistName}"
             alert "다운로드가 완료되었습니다.\n#{track.trackTitle} - #{track.artistName}"
           fileStream.on 'error', ->
-            console.log "다운로드가 실패하였습니다.\n#{track.trackTitle} - #{track.artistName}"
             alert "다운로드가 실패하였습니다.\n#{track.trackTitle} - #{track.artistName}"
 
 
