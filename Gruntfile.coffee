@@ -176,6 +176,35 @@ module.exports = (grunt) ->
           dest: 'dist/images/'
         ]
 
+    watch:
+      dev_scripts:
+        files: [ 'app/scripts/*' ]
+        tasks: [ 'coffee:dev' ]
+      dev_styles:
+        files: [ 'app/styles/*' ]
+        tasks: [ 'less:dev' ]
+      dev_views:
+        files: [
+          'app/*.jade'
+          'app/views/*'
+        ]
+        tasks: [ 'jade:dev' ]
+      dev_assets:
+        files: [ 'app/assets/*' ]
+        tasks: [ 'copy:assets' ]
+      dev_others:
+        files: [
+          'app/**/*'
+          '!app/assets/**/*'
+          '!app/scripts/**/*.coffee'
+          '!app/styles/**/*.less'
+          '!app/views/**/*.jade'
+          '!app/*.jade'
+        ]
+        tasks: [
+          'copy:dev_resources'
+        ]
+
     clean: 
       dev: [ '.tmp/' ]
       dist: [ 'dist/' ]
@@ -197,6 +226,11 @@ module.exports = (grunt) ->
   grunt.registerTask 'build', [
     'build:dev'
     'build:dist'
+  ]
+
+  grunt.registerTask 'dev', [
+    'build:dev'
+    'watch'
   ]
 
   grunt.registerTask 'build:dev', [
@@ -225,7 +259,7 @@ module.exports = (grunt) ->
     'imagemin:dist'
   ]
 
-  grunt.registerTask 'build:webkit', [
+  grunt.registerTask 'webkit', [
     'build:dist'
     'nodewebkit'
   ]
