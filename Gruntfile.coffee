@@ -24,7 +24,7 @@ module.exports = (grunt) ->
         ]
       dist:
         options:
-          sourceMap: true
+          sourceMap: false
         files: [
           expand: true
           cwd: 'app/scripts/'
@@ -115,13 +115,12 @@ module.exports = (grunt) ->
           cwd: 'app'
           dest: 'dist'
           src: [
-            'package.json'
-            '*.{ico,png,txt}'
-            'bower_components/**/*'
-            'images/{,*/}*.{gif,webp,svg}'
-            'styles/fonts/*'
-            '*.html'
-            'views/*.html'
+            '**/*'
+            '!assets/**/*'
+            '!scripts/**/*.coffee'
+            '!styles/**/*.less'
+            '!views/**/*.jade'
+            '!*.jade'
           ]
         ]
       dist_font:
@@ -179,36 +178,45 @@ module.exports = (grunt) ->
 
     watch:
       dev_scripts:
-        files: [ 'app/scripts/*' ]
+        files: [ 'app/scripts/**/*.coffee' ]
         tasks: [ 'coffee:dev' ]
       dev_styles:
-        files: [ 'app/styles/*' ]
+        files: [ 'app/styles/**/*.less' ]
         tasks: [ 'less:dev' ]
       dev_views:
         files: [
           'app/*.jade'
-          'app/views/*'
+          'app/views/**/*.jade'
         ]
         tasks: [ 'jade:dev' ]
       dev_assets:
         files: [ 'app/assets/*' ]
         tasks: [ 'copy:assets' ]
-      dev_others:
-        files: [
-          'app/**/*'
-          '!app/assets/**/*'
-          '!app/scripts/**/*.coffee'
-          '!app/styles/**/*.less'
-          '!app/views/**/*.jade'
-          '!app/*.jade'
-        ]
-        tasks: [
-          'copy:dev_resources'
-        ]
+      # dev_others:
+      #   files: [
+      #     'app/**/*'
+      #     '!app/bower_components'
+      #     '!app/assets/**/*'
+      #     '!app/scripts/**/*.coffee'
+      #     '!app/styles/**/*.less'
+      #     '!app/views/**/*.jade'
+      #     '!app/*.jade'
+      #   ]
+      #   tasks: [
+      #     'copy:dev_resources'
+      #   ]
 
     clean: 
       dev: [ '.tmp/' ]
       dist: [ 'dist/' ]
+      dist_original_scripts: [
+        'dist/scripts/**/*.js'
+        '!dist/scripts/script.usemin.js'
+      ]
+      dist_original_styles: [
+        'dist/styles/**/*.css'
+        '!dist/styles/style.usemin.css'
+      ]
 
     nodewebkit:
       options:
@@ -258,6 +266,8 @@ module.exports = (grunt) ->
     'htmlmin:dist'
     'cdnify'
     'imagemin:dist'
+    'clean:dist_original_scripts'
+    'clean:dist_original_styles'
   ]
 
   grunt.registerTask 'webkit', [

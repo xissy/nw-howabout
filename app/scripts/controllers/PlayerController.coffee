@@ -1,33 +1,14 @@
-# Services
-howaboutServices = angular.module 'howaboutServices', [ 'ng', 'ngResource' ]
-
-# App
-howaboutApp = angular.module 'howaboutApp', [ 'howaboutServices' ]
-
-# Controllers
-howaboutApp.controller 'MainController', [
-  '$scope'
-  '$route'
-  '$location'
-  '$http'
-  ($scope, $route, $location, $http) ->
-    $scope.onHeaderLoaded = ->
-
-    $scope.onPlayerLoaded = ->
-
-    # adjust scrollTop whenever click a tab based on relatedTarget and target tabs.
-    $scope.tabScrollTopMap = {}
-    $('#fixed-tabs a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
-      $scope.tabScrollTopMap[e.relatedTarget.hash] = $(document).scrollTop()
-      $scope.tabScrollTopMap[e.target.hash] = 0  if not $scope.tabScrollTopMap[e.target.hash]?
-      $(document).scrollTop $scope.tabScrollTopMap[e.target.hash]
-]
 
 howaboutApp.controller 'PlayerController', [
   '$scope'
   '$route'
   '$http'
-  ($scope, $route, $http) ->
+  'PlayInfoSharedService'
+  ($scope, $route, $http, playInfoSharedService) ->
+    $scope.$on 'onPlayInfoBroadcast', ->
+      musicPlayer.url = playInfoSharedService.streamUrl
+      musicPlayer.play()
+
     showPlayButton = ->
       $('#playButtonIcon').removeClass('icon-stop icon-pause').addClass('icon-play')
       $('#player-progress').removeClass('active')
@@ -101,7 +82,7 @@ howaboutApp.controller 'PlayerController', [
           showPlayButton()
         
 
-    $scope.onPlayButtonClick = ->
+    $scope.onClickPlay = ->
       switch getPlayState()
         when 'playing'
           musicPlayer.pause()
@@ -112,33 +93,3 @@ howaboutApp.controller 'PlayerController', [
           musicPlayer.play()
 
 ]
-
-# app configuration
-howaboutApp.config [
-  '$routeProvider'
-  '$locationProvider'
-  ($routeProvider, $locationProvider) ->
-    $routeProvider
-    .when '/',
-      templateUrl: 'views/main.html'
-      controller: 'MainController'
-    .otherwise
-      redirectTo: '/'
-
-]
-
-# boostrapping
-angular.bootstrap document, [ 'howaboutApp' ]
-
-# SoundManager
-isSoundManagerReady = false
-
-initSoundManager = ->
-  soundManager.setup
-    preferFlash: false
-    onready: ->
-      isSoundManagerReady = true
-    ontimeout: ->
-      alert 'Failed to initialize SoundManager.'
-
-initSoundManager()

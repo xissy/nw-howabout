@@ -1,19 +1,84 @@
+header.navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav(role='banner')
+  .container
+    .navbar-header
+      a.navbar-brand(href='#/') 이거어때?
+      .pull-right
+        form.navbar-search(ng-submit='onSubmitSearch(searchString)')
+          input(type='text', placeholder='제목 또는 가수 이름', ng-model='searchString')
+          input(type='submit', value='검색')
+
+
 .container
-  .row
+  #fixed-tabs-row.row
+    
     ul#fixed-tabs.nav.nav-tabs.nav-fixed-tabs
       li.active
-        a(href='#songs-tab', data-toggle='tab') 노래찾기
+        a(href='#songs-tab', data-toggle='tab') 추천 노래
       li
         a(href='#playlist-tab', data-toggle='tab') 플레이리스트
       li
-        a(href='#lyrics-tab', data-toggle='tab') 가사보기
-    .tab-content.tab-fixed-contents
+        a(href='#lyrics-tab', data-toggle='tab') 가사 보기
+    
+    #main-tab-content.tab-content.tab-fixed-contents
       #songs-tab.tab-pane.active
-        - for (var i=0; i<1000; i++)
-          p songsTab #{i}
+
+        #search-track-guide.song-guide(ng-show='track.isSearch')
+          h3 '{{track.searchString}}' 검색 결과
+
+        #selected-track-guide.song-guide(ng-show='track.trackTitle')
+          h3 {{track.trackTitle}} - {{track.artistName}}
+
+          #play-btn-group
+            .btn-group.btn-group-sm
+              button.btn.btn-default.btn-primary(type='button', ng-click='onClickListen(track)') 듣기
+
+              .btn-group.btn-group-sm
+                button.btn.btn-default.btn-warning.dropdown-toggle(type='button', data-toggle='dropdown')
+                  추가 
+                  span.caret
+                ul.dropdown-menu(role='menu')
+                  li
+                    a(ng-click='onClickAddNext(track)') 다음곡으로
+                  li
+                    a(ng-click='onClickAddLast(track)') 마지막으로
+
+              button.btn.btn-default.btn-danger(type='button', ng-click='onClickDownload(track)') 다운로드
+
+
+
+        #track-list
+          ul.thumbnails
+            li#track.col-xs-6(ng-cloak, ng-repeat='track in tracks')
+              .thumbnail
+                a(ng-click='onClickTrack(track)')
+                  img(ng-src='{{track.posterImageUrl}}')
+                  p
+                    strong {{track.trackTitle}} - {{track.artistName}}
+
+                #play-btn-group
+                  .btn-group.btn-group-sm
+                    button.btn.btn-default.btn-primary(type='button', ng-click='onClickListen(track)') 듣기
+
+                    .btn-group.btn-group-sm
+                      button.btn.btn-default.btn-warning.dropdown-toggle(type='button', data-toggle='dropdown')
+                        추가 
+                        span.caret
+                      ul.dropdown-menu(role='menu')
+                        li
+                          a(ng-click='onClickAddNext(track)') 다음곡으로
+                        li
+                          a(ng-click='onClickAddLast(track)') 마지막으로
+
+                    button.btn.btn-default.btn-danger(type='button', ng-click='onClickDownload(track)') 다운로드
+
+
       #playlist-tab.tab-pane
-        - for (var i=0; i<1000; i++)
-          p playlistTab #{i}
+        table
+          tr(ng-clock, ng-repeat='track in playlist')
+            td
+              {{track.trackTitle}}
+              {{track.artistName}}
+
       #lyrics-tab.tab-pane
-        - for (var i=0; i<1000; i++)
-          p lyricsTab #{i}
+        h3#lyrics-track
+        h4#lyrics

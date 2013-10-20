@@ -12,8 +12,6 @@ html(lang='en')
     // endbuild
   
   body(ng-controller='MainController')
-    div(ng-include='"views/header.html"', onload='onHeaderLoaded()')
-
     div(ng-view)
 
     div(ng-include='"views/player.html"', onload='onPlayerLoaded()')
@@ -24,6 +22,13 @@ html(lang='en')
     script(type='text/javascript', src='bower_components/angular/angular.js')
     script(type='text/javascript', src='bower_components/angular-resource/angular-resource.js')
     script(type='text/javascript', src='bower_components/soundmanager/script/soundmanager2.js')
-    script(type='text/javascript', src='scripts/app.js')
+    script(type='text/javascript', src='scripts/prepareApp.js')
+    script(type='text/javascript', src='scripts/services/Track.js')
+    script(type='text/javascript', src='scripts/services/RecommendedTrack.js')
+    script(type='text/javascript', src='scripts/services/PlayInfo.js')
+    script(type='text/javascript', src='scripts/services/PlayInfoSharedService.js')
+    script(type='text/javascript', src='scripts/controllers/MainController.js')
+    script(type='text/javascript', src='scripts/controllers/PlayerController.js')
+    script(type='text/javascript', src='scripts/initApp.js')
     // endbuild
     

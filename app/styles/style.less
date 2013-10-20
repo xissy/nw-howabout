@@ -1,9 +1,15 @@
 @body-background-color: #eee;
 @player-button-color: #ccc;
 @player-button-hover-color: #fff;
+@theme-color: #463265;
+
 
 body {
   background-color: @body-background-color;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none;
 }
 
 .navbar-inverse .navbar-text {
@@ -13,12 +19,96 @@ body {
   margin: 12px;
 }
 
-.nav-fixed-tabs {
-  position: fixed;
-  background-color: @body-background-color;
+#fixed-tabs-row {
+  margin-bottom: 100px;
+
+  .nav-fixed-tabs {
+    background-color: @body-background-color;
+    position: fixed;
+    width: 100%;
+
+    z-index: 100;
+  }
+
+  .tab-fixed-contents {
+    margin-top: 40px;
+    margin-bottom: 50px;
+  }
 }
-.tab-fixed-contents {
-  margin-top: 50px;
+
+#main-tab-content {
+
+  #songs-tab {
+    margin-top: 55px;
+    z-index: 10;
+
+    .song-guide {
+      padding: 20px;
+
+      h4 {
+      }
+    }
+
+    #track-list {
+      ul {
+        list-style-type: none;
+        padding: 0;
+
+        li#track {
+          padding: 0;
+          padding: 10px;
+          margin: 5px;
+          margin-top: 0;
+          width: 190px;
+          
+          a {
+            cursor: pointer;
+
+            img {
+              width: 150px;
+              height: 150px;
+            }
+
+            p {
+              margin-top: 3px;
+              text-align: center;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              display: block;
+              overflow: hidden;
+              height: 17px;
+            }
+          }
+
+          #play-btn-group {
+            text-align: center;
+            margin-bottom: 3px;
+          }
+
+        }
+      }
+    }
+  }
+
+  #lyrics-tab {
+    margin-top: 55px;
+    margin-bottom: 50px;
+
+    #lyrics-track {
+      padding: 20px;
+    }
+
+    #lyrics {
+      font-weight: 300;
+      font-size: 1.2em;
+      text-align: center;
+      color: #444;
+    }
+  }
+}
+
+.tab-bottom {
+  height: 500px;
 }
 
 .player {
@@ -73,7 +163,7 @@ body {
     height: 10px;
 
     #player-progress-bar {
-      background-color: #463265;
+      background-color: @theme-color;
     }
   }
 }
