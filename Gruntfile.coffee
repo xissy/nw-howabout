@@ -123,6 +123,16 @@ module.exports = (grunt) ->
             'views/*.html'
           ]
         ]
+      dist_font:
+        files: [
+          expand: true
+          dot: true
+          cwd: 'app/bower_components/font-awesome/font/'
+          dest: 'dist/font/'
+          src: [
+            '**/*'
+          ]
+        ]
 
     cdnify:
       dist:
@@ -204,6 +214,7 @@ module.exports = (grunt) ->
     'jade:dist'
     'less:dist'
     'copy:dist'
+    'copy:dist_font'
     'useminPrepare'
     'concat'
     'uglify'
