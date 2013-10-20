@@ -100,11 +100,12 @@ module.exports = (grunt) ->
           cwd: 'app'
           dest: '.tmp'
           src: [
-            'package.json'
-            '*.{ico,png,txt}'
-            'bower_components/**/*'
-            'images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-            'styles/fonts/*'
+            '**/*'
+            '!assets/**/*'
+            '!scripts/**/*.coffee'
+            '!styles/**/*.less'
+            '!views/**/*.jade'
+            '!*.jade'
           ]
         ]
       dist:

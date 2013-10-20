@@ -19,8 +19,7 @@
     "angular": "~1.0.8",
     "angular-resource": "~1.0.8",
     "angular-ui": "~0.4.0",
-    "flat-ui-official": "~2.1.1"
+    "soundmanager": "*"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

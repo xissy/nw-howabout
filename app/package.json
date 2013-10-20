@@ -20,7 +20,7 @@
     "position": "center",
     "min_width": 400,
     "min_height": 600,
-    "max_width": 400,
+    "max_width": 1024,
     "max_height": 600
   },
   "webkit": {

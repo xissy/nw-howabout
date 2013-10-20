@@ -1,0 +1,19 @@
+.container
+  .row
+    ul#fixed-tabs.nav.nav-tabs.nav-fixed-tabs
+      li.active
+        a(href='#songs-tab', data-toggle='tab') 노래찾기
+      li
+        a(href='#playlist-tab', data-toggle='tab') 플레이리스트
+      li
+        a(href='#lyrics-tab', data-toggle='tab') 가사보기
+    .tab-content.tab-fixed-contents
+      #songs-tab.tab-pane.active
+        - for (var i=0; i<1000; i++)
+          p songsTab #{i}
+      #playlist-tab.tab-pane
+        - for (var i=0; i<1000; i++)
+          p playlistTab #{i}
+      #lyrics-tab.tab-pane
+        - for (var i=0; i<1000; i++)
+          p lyricsTab #{i}

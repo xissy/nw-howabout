@@ -1,0 +1,21 @@
+div(ng-controller='PlayerController')
+  footer.player.navbar.navbar-inverse.navbar-fixed-bottom(role='player')
+    .container
+      .row
+        .player-buttons.col-xs-4
+          i.player-button.icon-backward
+          span.player-button-space
+          i#playButtonIcon.player-button.icon-play(ng-click='onPlayButtonClick()')
+          span.player-button-space
+          i.player-button.icon-forward
+        .player-small-buttons.col-xs-1
+          i.icon-random
+          br
+          i.icon-repeat
+        #player-progress-area.col-xs-7
+          #positionTime(ng-init='positionTimeString="0:00"', ng-bind='positionTimeString')
+          #durationTime(ng-init='durationTimeString="0:00"', ng-bind='durationTimeString')
+          #player-progress.progress.progress-striped.active
+            #player-progress-bar.progress-bar(
+              ng-init='progressPercentStyle="{width: 50%}"', ng-style='progressPercentStyle', 
+              role='progressbar', aria-valuenow='20', aria-valuemin='0', aria-valuemax='100')

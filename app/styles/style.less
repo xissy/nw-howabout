@@ -1,0 +1,79 @@
+@body-background-color: #eee;
+@player-button-color: #ccc;
+@player-button-hover-color: #fff;
+
+body {
+  background-color: @body-background-color;
+}
+
+.navbar-inverse .navbar-text {
+  color: #ddd;
+}
+.navbar-search {
+  margin: 12px;
+}
+
+.nav-fixed-tabs {
+  position: fixed;
+  background-color: @body-background-color;
+}
+.tab-fixed-contents {
+  margin-top: 50px;
+}
+
+.player {
+  color: @player-button-color;
+
+  i:hover {
+    color: @player-button-hover-color;
+  }
+}
+
+.player-buttons {
+  text-align: justify;
+  padding: 12px;
+
+  .player-button {
+    font-size: 1.8em;
+  }
+
+  .player-button-space {
+    margin: 10px;
+  }
+}
+
+.player-small-buttons {
+  margin-top: 5px;
+  text-align: left;
+  padding: 0px;
+
+  .player-button {
+    font-size: 1.0em;
+  }
+}
+
+#player-progress-area {
+  display: block;
+  padding: 0px;
+  padding-right: 10px;
+  margin-top: 7px;
+
+  #positionTime {
+    text-align: left;
+    float: left;
+  }
+
+  #durationTime {
+    text-align: right;
+  }
+
+  #player-progress {
+    margin: 0;
+    margin-top: 1px;
+    height: 10px;
+
+    #player-progress-bar {
+      background-color: #463265;
+    }
+  }
+}

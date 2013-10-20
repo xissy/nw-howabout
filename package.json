@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "coffee-script": "~1.6.3",
-    "async": "~0.2.9"
+    "async": "~0.2.9",
+    "grooveshark-streaming": "~0.0.5"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
