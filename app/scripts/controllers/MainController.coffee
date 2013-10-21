@@ -13,6 +13,9 @@ howaboutApp.controller 'MainController', [
     $scope.playlist = playlistSharedService.playlist
     $scope.tabScrollTopMap = {}
 
+    $scope.getPlaylistIndex = ->
+      playlistSharedService.playingIndex
+
 
     # adjust scrollTop whenever click a tab based on relatedTarget and target tabs.
     $('#fixed-tabs a[data-toggle="tab"]').on 'show.bs.tab', (e) ->
@@ -107,7 +110,7 @@ howaboutApp.controller 'MainController', [
         $('#alertDialog').modal 'show'
         return
 
-      $('#fixed-tabs a:first').tab('show');
+      $('#fixed-tabs a:first').tab 'show'
 
       $scope.track =
         isSearch: true
@@ -129,5 +132,17 @@ howaboutApp.controller 'MainController', [
           $scope.tracks = newTracks
           $scope.isTrackLoading = false
           $scope.searchString = ''
+
+
+    $scope.onClickPlayIndex = (index) ->
+      playlistSharedService.playIndex index
+
+    $scope.onClickDeleteIndex = (index) ->
+      playlistSharedService.deleteIndex index
+
+    $scope.onClickPlaylistTrack = (track) ->
+      $('#fixed-tabs a:first').tab 'show'
+      if track isnt $scope.track
+        $scope.onClickTrack track
 
 ]

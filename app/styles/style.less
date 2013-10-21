@@ -2,6 +2,7 @@
 @player-button-color: #ccc;
 @player-button-hover-color: #fff;
 @theme-color: #463265;
+@theme-color-light: #D0BEED;
 
 
 body {
@@ -31,6 +32,10 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
 #alertDialog {
   .modal-dialog {
     width: 80%;
+
+    .modal-header {
+      display: none;
+    }
   }
 }
 
@@ -95,11 +100,50 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
             }
           }
 
-          #play-btn-group {
+          .play-btn-group {
             text-align: center;
             margin-bottom: 3px;
           }
 
+        }
+      }
+    }
+  }
+
+  #playlist-tab {
+    .list-group {
+      .active {
+        background-color: @theme-color-light;
+        border-color: @theme-color-light;
+      }
+
+      .list-group-item {
+        height: 70px;
+        margin-left: -5px;
+
+        .left {
+          text-align: left;
+          width: 270px;
+          float: left;
+          cursor: pointer;
+
+          img.track-image {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            float: left;
+          }
+
+          p {
+          }
+        }
+
+        .right {
+          text-align: right;
+
+          .play-btn-group {
+            margin-top: 10px;
+          }
         }
       }
     }

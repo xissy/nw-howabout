@@ -21,7 +21,7 @@ howaboutServices.factory 'PlaylistSharedService', [
 
 
       playNext: ->
-        if @playlist.length >= @playingIndex + 1
+        if @playlist.length > @playingIndex + 1
           @playingIndex++
           @play()
 
@@ -44,6 +44,11 @@ howaboutServices.factory 'PlaylistSharedService', [
 
       addLast: (track) ->
         @playlist.push track
+
+
+      deleteIndex: (index) ->
+        @playlist.splice index, 1
+        @playingIndex = -1  if @playingIndex is index
 
 
       broadcastStartLoadingSong: ->

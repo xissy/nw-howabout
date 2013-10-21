@@ -14,11 +14,11 @@ input#saveDialog(type='file', nwsaveas='이거어때.mp3')
 #alertDialog.modal.fade
   .modal-dialog
     .modal-content
-      //- .modal-header
-      //-   button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
-      //-   h4.modal-title 이거어때?
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+        h4.modal-title 이거어때?
       .modal-body
-        p#modalBodyMessage Nice.
+        p#modalBodyMessage
       .modal-footer
         button.btn.btn-default(type='button', data-dismiss='modal') 닫기
 
@@ -43,7 +43,7 @@ input#saveDialog(type='file', nwsaveas='이거어때.mp3')
         #selected-track-guide.song-guide(ng-show='track.trackTitle')
           h3 {{track.trackTitle}} - {{track.artistName}}
 
-          #play-btn-group
+          .play-btn-group
             .btn-group.btn-group-sm
               button.btn.btn-default.btn-primary(type='button', ng-click='onClickListen(track)') 듣기
 
@@ -60,7 +60,6 @@ input#saveDialog(type='file', nwsaveas='이거어때.mp3')
               button.btn.btn-default.btn-danger(type='button', ng-click='onClickDownload(track)') 다운로드
 
 
-
         #track-list
           ul.thumbnails
             li#track.col-xs-6(ng-cloak, ng-repeat='track in tracks')
@@ -70,7 +69,7 @@ input#saveDialog(type='file', nwsaveas='이거어때.mp3')
                   p
                     strong {{track.trackTitle}} - {{track.artistName}}
 
-                #play-btn-group
+                .play-btn-group
                   .btn-group.btn-group-sm
                     button.btn.btn-default.btn-primary(type='button', ng-click='onClickListen(track)') 듣기
 
@@ -89,7 +88,20 @@ input#saveDialog(type='file', nwsaveas='이거어때.mp3')
 
       #playlist-tab.tab-pane
         ul.list-group
-          .list-group-item(ng-clock, ng-repeat='track in playlist') {{track.trackTitle}} - {{track.artistName}}
+          .list-group-item(ng-clock, ng-repeat='track in playlist', ng-class='{"active": getPlaylistIndex() == $index}')
+            .left(ng-click='onClickPlaylistTrack(track)')
+              img.track-image(ng-src='{{track.posterImageUrl}}')
+              p
+                strong {{track.trackTitle}} - {{track.artistName}}
+            .right
+              .play-btn-group
+                .btn-group.btn-group-sm
+                  button.btn.btn-default.btn-primary(type='button', ng-click='onClickPlayIndex($index)')
+                    i.icon-play
+                  button.btn.btn-default.btn-warning(type='button', ng-click='onClickDownload(track)')
+                    i.icon-download-alt
+                  button.btn.btn-default.btn-danger(type='button', ng-click='onClickDeleteIndex($index)')
+                    i.icon-remove
 
 
       #lyrics-tab.tab-pane
