@@ -109,6 +109,8 @@ howaboutApp.controller 'MainController', [
       
       $scope.tracks = []
 
+      $('#songs-tab').tab('show')
+
       tracks = Track.search
         q: searchString
       ,
