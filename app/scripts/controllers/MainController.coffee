@@ -6,10 +6,15 @@ howaboutApp.controller 'MainController', [
   'Track'
   'RecommendedTrack'
   'PlayInfoSharedService'
-  ($scope, $route, $http, Track, RecommendedTrack, playInfoSharedService) ->
+  'PlaylistSharedService'
+  ($scope, $route, $http, Track, RecommendedTrack, playInfoSharedService, playlistSharedService) ->
+
+    $scope.tracks = []
+    $scope.playlist = playlistSharedService.playlist
+    $scope.tabScrollTopMap = {}
+
 
     # adjust scrollTop whenever click a tab based on relatedTarget and target tabs.
-    $scope.tabScrollTopMap = {}
     $('#fixed-tabs a[data-toggle="tab"]').on 'show.bs.tab', (e) ->
       $scope.tabScrollTopMap[e.relatedTarget.hash] = $(document).scrollTop()
     $('#fixed-tabs a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
@@ -17,7 +22,7 @@ howaboutApp.controller 'MainController', [
       $(document).scrollTop $scope.tabScrollTopMap[e.target.hash]
 
 
-    $scope.$on 'onPlayInfoBroadcast', ->
+    $scope.$on 'onBroadcastPlayInfo', ->
       lyricsHtml = playInfoSharedService.lyrics?.replace /\n/g, '<br />'
 
       track = playInfoSharedService.track
@@ -42,8 +47,6 @@ howaboutApp.controller 'MainController', [
       track.posterImageUrl = posterImageUrl
       track
 
-
-    $scope.tracks = []
 
     loadMoreRandomTracks = ->
       tracks = Track.listRandom ->
@@ -75,13 +78,14 @@ howaboutApp.controller 'MainController', [
 
 
     $scope.onClickListen = (track) ->
-      playInfoSharedService.playTrack track
+      playlistSharedService.addNext track
+      playlistSharedService.playNext()
 
     $scope.onClickAddNext = (track) ->
-      $scope.tracks = []
+      playlistSharedService.addNext track
 
     $scope.onClickAddLast = (track) ->
-      $scope.tracks = []
+      playlistSharedService.addLast track
 
     
     saveDialog = $('#saveDialog')

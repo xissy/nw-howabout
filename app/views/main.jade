@@ -88,11 +88,9 @@ input#saveDialog(type='file', nwsaveas='이거어때.mp3')
 
 
       #playlist-tab.tab-pane
-        table
-          tr(ng-clock, ng-repeat='track in playlist')
-            td
-              {{track.trackTitle}}
-              {{track.artistName}}
+        ul.list-group
+          .list-group-item(ng-clock, ng-repeat='track in playlist') {{track.trackTitle}} - {{track.artistName}}
+
 
       #lyrics-tab.tab-pane
         h3#lyrics-track

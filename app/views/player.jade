@@ -5,11 +5,11 @@ div(ng-controller='PlayerController')
       .row
 
         .player-buttons.col-xs-4
-          i.player-button.icon-backward
+          i.player-button.icon-backward(ng-click='onClickPrev()')
           span.player-button-space
           i#playButtonIcon.player-button.icon-play(ng-click='onClickPlay()')
           span.player-button-space
-          i.player-button.icon-forward
+          i.player-button.icon-forward(ng-click='onClickNext()')
         .player-small-buttons.col-xs-1
           i.icon-random
           br

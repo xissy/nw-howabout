@@ -4,22 +4,35 @@ howaboutApp.controller 'PlayerController', [
   '$route'
   '$http'
   'PlayInfoSharedService'
-  ($scope, $route, $http, playInfoSharedService) ->
-    $scope.$on 'onPlayInfoBroadcast', ->
+  'PlaylistSharedService'
+  ($scope, $route, $http, playInfoSharedService, playlistSharedService) ->
+
+    $scope.$on 'onBroadcastPlayInfo', ->
       musicPlayer.url = playInfoSharedService.streamUrl
       musicPlayer.play()
 
+
+    $scope.$on 'onBroadcastStartLoadingSong', ->
+      musicPlayer.pause()
+      showLoading()
+
+
     showPlayButton = ->
-      $('#playButtonIcon').removeClass('icon-stop icon-pause').addClass('icon-play')
+      $('#playButtonIcon').removeClass('icon-stop icon-pause icon-spinner icon-spin').addClass('icon-play')
       $('#player-progress').removeClass('active')
 
     showPauseButton = ->
-      $('#playButtonIcon').removeClass('icon-stop icon-play').addClass('icon-pause')
+      $('#playButtonIcon').removeClass('icon-stop icon-play icon-spinner icon-spin').addClass('icon-pause')
       $('#player-progress').addClass('active')
 
     showStopButton = ->
-      $('#playButtonIcon').removeClass('icon-play icon-pause').addClass('icon-stop')
+      $('#playButtonIcon').removeClass('icon-play icon-pause icon-spinner icon-spin').addClass('icon-stop')
       $('#player-progress').addClass('active')
+
+    showLoading = ->
+      $('#playButtonIcon').removeClass('icon-play icon-pause icon-stop').addClass('icon-spinner icon-spin')
+      $('#player-progress').removeClass('active')
+
 
     musicPlayer = soundManager.createSound
       id: 'musicPlayer'
@@ -41,6 +54,7 @@ howaboutApp.controller 'PlayerController', [
         $scope.$apply ->
           $scope.durationTimeString = '0:00'
           $scope.positionTimeString = '0:00'
+        playlistSharedService.playNext()
       whileloading: ->
         null
       whileplaying: ->
@@ -89,7 +103,12 @@ howaboutApp.controller 'PlayerController', [
         when 'paused'
           musicPlayer.play()
         else
-          musicPlayer.url = 'https://dl.dropboxusercontent.com/s/al83mrekonj315r/%EC%B0%B8%EA%B3%A0%20%EC%82%B4%EC%95%84%20-%20%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%20%EB%93%80%EC%98%A4.mp3?token_hash=AAHc2wrTdBIp3_Zro6QOE1SWV9wjD0W4FiaYsfSXttWBQQ&dl=1'
-          musicPlayer.play()
+          playlistSharedService.playNext()
+
+    $scope.onClickPrev = ->
+      playlistSharedService.playPrev()
+
+    $scope.onClickNext = ->
+      playlistSharedService.playNext()
 
 ]

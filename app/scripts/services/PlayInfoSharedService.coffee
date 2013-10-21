@@ -78,6 +78,6 @@ howaboutServices.factory 'PlayInfoSharedService', [
             
 
       broadcastPlayInfo: ->
-        $rootScope.$broadcast 'onPlayInfoBroadcast'
+        $rootScope.$broadcast 'onBroadcastPlayInfo'
       
 ]
