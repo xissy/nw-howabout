@@ -140,7 +140,7 @@ howaboutApp.controller 'MainController', [
     $scope.onClickDeleteIndex = (index) ->
       playlistSharedService.deleteIndex index
 
-    $scope.onClickPlaylistTrack = (track) ->
+    $scope.onClickSearchByTrack = (track) ->
       $('#fixed-tabs a:first').tab 'show'
       if track isnt $scope.track
         $scope.onClickTrack track

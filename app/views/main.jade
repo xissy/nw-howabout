@@ -89,15 +89,15 @@ input#saveDialog(type='file', nwsaveas='이거어때.mp3')
       #playlist-tab.tab-pane
         ul.list-group
           .list-group-item(ng-clock, ng-repeat='track in playlist', ng-class='{"active": getPlaylistIndex() == $index}')
-            .left(ng-click='onClickPlaylistTrack(track)')
+            .left(ng-click='onClickPlayIndex($index)')
               img.track-image(ng-src='{{track.posterImageUrl}}')
               p
                 strong {{track.trackTitle}} - {{track.artistName}}
             .right
               .play-btn-group
                 .btn-group.btn-group-sm
-                  button.btn.btn-default.btn-primary(type='button', ng-click='onClickPlayIndex($index)')
-                    i.icon-play
+                  button.btn.btn-default.btn-primary(type='button', ng-click='onClickSearchByTrack(track)')
+                    i.icon-search
                   button.btn.btn-default.btn-warning(type='button', ng-click='onClickDownload(track)')
                     i.icon-download-alt
                   button.btn.btn-default.btn-danger(type='button', ng-click='onClickDeleteIndex($index)')
