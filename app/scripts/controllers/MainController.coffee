@@ -8,17 +8,26 @@ howaboutApp.controller 'MainController', [
   'PlayInfoSharedService'
   ($scope, $route, $http, Track, RecommendedTrack, playInfoSharedService) ->
 
+    # adjust scrollTop whenever click a tab based on relatedTarget and target tabs.
+    $scope.tabScrollTopMap = {}
+    $('#fixed-tabs a[data-toggle="tab"]').on 'show.bs.tab', (e) ->
+      $scope.tabScrollTopMap[e.relatedTarget.hash] = $(document).scrollTop()
+    $('#fixed-tabs a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
+      $scope.tabScrollTopMap[e.target.hash] = 0  if not $scope.tabScrollTopMap[e.target.hash]?
+      $(document).scrollTop $scope.tabScrollTopMap[e.target.hash]
+
+
     $scope.$on 'onPlayInfoBroadcast', ->
       lyricsHtml = playInfoSharedService.lyrics?.replace /\n/g, '<br />'
 
+      track = playInfoSharedService.track
+      $('#lyrics-track').text "#{track.trackTitle} - #{track.artistName}"
+      $scope.tabScrollTopMap['#lyricsTab'] = 0
+
       if lyricsHtml?
-        track = playInfoSharedService.track
-        $scope.tabScrollTopMap['#lyricsTab'] = 0
-        $('#lyrics-track').text "#{track.trackTitle} - #{track.artistName}"
         $('#lyrics').html lyricsHtml
       else
-        $('#lyrics-track').text ''
-        $('#lyrics').text ''
+        $('#lyrics').text '이 곡은 가사가 없습니다.'
 
 
     $scope.onPlayerLoaded = ->
@@ -108,8 +117,6 @@ howaboutApp.controller 'MainController', [
       $(document).scrollTop 0
       
       $scope.tracks = []
-
-      $('#songs-tab').tab('show')
 
       tracks = Track.search
         q: searchString
