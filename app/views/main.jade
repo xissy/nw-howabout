@@ -10,6 +10,19 @@ header.navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav(role='banner')
 
 input#saveDialog(type='file', nwsaveas='이거어때.mp3')
 
+
+#alertDialog.modal.fade
+  .modal-dialog
+    .modal-content
+      //- .modal-header
+      //-   button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+      //-   h4.modal-title 이거어때?
+      .modal-body
+        p#modalBodyMessage Nice.
+      .modal-footer
+        button.btn.btn-default(type='button', data-dismiss='modal') 닫기
+
+
 .container
   #fixed-tabs-row.row
     

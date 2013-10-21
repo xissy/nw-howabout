@@ -43,15 +43,6 @@ howaboutApp.controller 'MainController', [
       track
 
 
-    # adjust scrollTop whenever click a tab based on relatedTarget and target tabs.
-    $scope.tabScrollTopMap = {}
-    $('#fixed-tabs a[data-toggle="tab"]').on 'show.bs.tab', (e) ->
-      $scope.tabScrollTopMap[e.relatedTarget.hash] = $(document).scrollTop()
-    $('#fixed-tabs a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
-      $scope.tabScrollTopMap[e.target.hash] = 0  if not $scope.tabScrollTopMap[e.target.hash]?
-      $(document).scrollTop $scope.tabScrollTopMap[e.target.hash]
-
-
     $scope.tracks = []
 
     loadMoreRandomTracks = ->
@@ -108,7 +99,11 @@ howaboutApp.controller 'MainController', [
 
     $scope.onSubmitSearch = (searchString) ->
       if not searchString? or searchString.length < 2
-        return alert '검색어가 너무 짧습니다.'
+        $('#modalBodyMessage').text '검색어가 너무 짧습니다.'
+        $('#alertDialog').modal 'show'
+        return
+
+      $('#fixed-tabs a:first').tab('show');
 
       $scope.track =
         isSearch: true

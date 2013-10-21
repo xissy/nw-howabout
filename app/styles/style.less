@@ -23,6 +23,17 @@ body {
   display: none;
 }
 
+// https://github.com/twbs/bootstrap/issues/9855
+body, .navbar-fixed-top, .navbar-fixed-bottom {
+  margin-right: 0 !important;
+}
+
+#alertDialog {
+  .modal-dialog {
+    width: 80%;
+  }
+}
+
 #fixed-tabs-row {
   margin-bottom: 100px;
 
