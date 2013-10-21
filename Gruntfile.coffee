@@ -146,6 +146,26 @@ module.exports = (grunt) ->
             'ytdl/**/*'
           ]
         ]
+      dist_ffmpegsumo_mac:
+        files: [
+          expand: true
+          dot: true
+          cwd: 'webkit_deps/mac/'
+          dest: 'webkitbuilds/releases/howabout/mac/howabout.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/'
+          src: [
+            'ffmpegsumo.so'
+          ]
+        ]
+      dist_ffmpegsumo_win:
+        files: [
+          expand: true
+          dot: true
+          cwd: 'webkit_deps/win/'
+          dest: 'webkitbuilds/releases/howabout/win/howabout/'
+          src: [
+            'ffmpegsumo.dll'
+          ]
+        ]
 
     cdnify:
       dist:
@@ -291,4 +311,6 @@ module.exports = (grunt) ->
     'build:dist'
     'clean:webkit_releases'
     'nodewebkit'
+    'copy:dist_ffmpegsumo_mac'
+    'copy:dist_ffmpegsumo_win'
   ]
