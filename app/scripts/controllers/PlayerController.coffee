@@ -14,7 +14,11 @@ howaboutApp.controller 'PlayerController', [
 
     $scope.$on 'onBroadcastStartLoadingSong', ->
       musicPlayer.pause()
-      showLoading()
+      showLoadingIcon()
+      $scope.durationTimeString = '0:00'
+      $scope.positionTimeString = '0:00'
+      $scope.progressPercentStyle =
+        width: '0%'
 
 
     showPlayButton = ->
@@ -29,7 +33,7 @@ howaboutApp.controller 'PlayerController', [
       $('#playButtonIcon').removeClass('icon-play icon-pause icon-spinner icon-spin').addClass('icon-stop')
       $('#player-progress').addClass('active')
 
-    showLoading = ->
+    showLoadingIcon = ->
       $('#playButtonIcon').removeClass('icon-play icon-pause icon-stop').addClass('icon-spinner icon-spin')
       $('#player-progress').removeClass('active')
 

@@ -48,8 +48,7 @@ input#saveDialog(type='file', nwsaveas='이거어때.mp3')
               button.btn.btn-default.btn-primary(type='button', ng-click='onClickListen(track)') 듣기
 
               .btn-group.btn-group-sm
-                button.btn.btn-default.btn-warning.dropdown-toggle(type='button', data-toggle='dropdown')
-                  추가 
+                button.btn.btn-default.btn-warning.dropdown-toggle(type='button', data-toggle='dropdown') 추가 
                   span.caret
                 ul.dropdown-menu(role='menu')
                   li
@@ -72,11 +71,12 @@ input#saveDialog(type='file', nwsaveas='이거어때.mp3')
                 .play-btn-group
                   .btn-group.btn-group-sm
                     button.btn.btn-default.btn-primary(type='button', ng-click='onClickListen(track)') 듣기
+                      //- i.icon-play
 
                     .btn-group.btn-group-sm
-                      button.btn.btn-default.btn-warning.dropdown-toggle(type='button', data-toggle='dropdown')
-                        추가 
+                      button.btn.btn-default.btn-warning.dropdown-toggle(type='button', data-toggle='dropdown') 추가 
                         span.caret
+                        //- i.icon-plus
                       ul.dropdown-menu(role='menu')
                         li
                           a(ng-click='onClickAddNext(track)') 다음곡으로
@@ -84,6 +84,7 @@ input#saveDialog(type='file', nwsaveas='이거어때.mp3')
                           a(ng-click='onClickAddLast(track)') 마지막으로
 
                     button.btn.btn-default.btn-danger(type='button', ng-click='onClickDownload(track)') 다운로드
+                      //- i.icon-download-alt
 
 
       #playlist-tab.tab-pane
@@ -96,11 +97,11 @@ input#saveDialog(type='file', nwsaveas='이거어때.mp3')
             .right
               .play-btn-group
                 .btn-group.btn-group-sm
-                  button.btn.btn-default.btn-primary(type='button', ng-click='onClickSearchByTrack(track)')
+                  button.btn.btn-default.btn-primary(type='button', alt='듣기', ng-click='onClickSearchByTrack(track)')
                     i.icon-search
-                  button.btn.btn-default.btn-warning(type='button', ng-click='onClickDownload(track)')
+                  button.btn.btn-default.btn-warning(type='button', alt='추가', ng-click='onClickDownload(track)')
                     i.icon-download-alt
-                  button.btn.btn-default.btn-danger(type='button', ng-click='onClickDeleteIndex($index)')
+                  button.btn.btn-default.btn-danger(type='button', alt='다운로드', ng-click='onClickDeleteIndex($index)')
                     i.icon-remove
 
 
