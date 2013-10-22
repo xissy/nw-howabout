@@ -48,7 +48,11 @@ howaboutServices.factory 'PlaylistSharedService', [
 
       deleteIndex: (index) ->
         @playlist.splice index, 1
-        @playingIndex = -1  if @playingIndex is index
+        
+        if @playingIndex is index
+          @playingIndex = -1
+        else if @playingIndex > index
+          @playingIndex--
 
 
       broadcastStartLoadingSong: ->
