@@ -30,7 +30,8 @@ howaboutApp.controller 'MainController', [
 
       track = playInfoSharedService.track
       $('#lyrics-track').text "#{track.trackTitle} - #{track.artistName}"
-      $scope.tabScrollTopMap['#lyricsTab'] = 0
+      $scope.tabScrollTopMap['#lyrics-tab'] = 0
+      $(document).scrollTop 0  if $('#lyrics-tab').hasClass 'active'
 
       if lyricsHtml?
         $('#lyrics').html lyricsHtml
