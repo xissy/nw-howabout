@@ -7,3 +7,7 @@
 <img src="http://s17.postimg.org/uaebunxfj/Screen_Shot_2013_10_24_at_4_43_47_PM.png" width=240 />
 <img src="http://s21.postimg.org/kpvajtm7r/Screen_Shot_2013_10_24_at_4_30_36_PM.png" width=240 />
 <img src="http://s24.postimg.org/vkd750z45/Screen_Shot_2013_10_24_at_4_47_16_PM.png" width=240 />
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/xissy/nw-howabout/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
