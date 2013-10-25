@@ -102,6 +102,7 @@ howaboutApp.controller 'MainController', [
       $scope.savingTrack = track
       
       saveDialog.val null
+      saveDialog.attr 'nwsaveas', "#{track.trackTitle} - #{track.artistName}.mp3"
       saveDialog.trigger 'click'
 
 

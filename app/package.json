@@ -2,7 +2,7 @@
   "main": "index.html",
   "name": "howabout",
   "version": "0.0.1",
-  "description": "New generation free music streaming player.",
+  "description": "Another new gen free music streaming player.",
   "keywords": [
     "music",
     "mp3",
@@ -13,15 +13,13 @@
   ],
   "window": {
     "title": "이거어때?",
-    "toolbar": true,
+    "toolbar": false,
     "frame": true,
     "width": 400,
     "height": 600,
     "position": "center",
     "min_width": 400,
-    "min_height": 600,
-    "max_width": 1024,
-    "max_height": 600
+    "min_height": 600
   },
   "webkit": {
     "plugin": true

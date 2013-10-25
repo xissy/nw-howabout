@@ -1,7 +1,7 @@
 {
   "name": "nw-howabout",
   "version": "0.0.1",
-  "description": "New generation free music streaming player.",
+  "description": "Another new gen free music streaming player.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
