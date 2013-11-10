@@ -259,8 +259,8 @@ module.exports = (grunt) ->
         build_dir: 'webkitbuilds'
         mac: true
         win: true
-        linux32: false
-        linux64: false
+        linux32: true
+        linux64: true
       src: [ 'dist/**/*' ]
 
 
