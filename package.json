@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xissy/node-howabout.git"
+    "url": "https://github.com/xissy/nw-howabout.git"
   },
   "keywords": [
     "music",
@@ -21,7 +21,7 @@
   "author": "Taeho Kim <xissysnd@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xissy/node-howabout/issues"
+    "url": "https://github.com/xissy/nw-howabout/issues"
   },
   "dependencies": {
     "grooveshark-streaming": "~0.0.5",
