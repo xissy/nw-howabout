@@ -116,6 +116,16 @@ module.exports = (grunt) ->
           dest: 'dist'
           src: [
             '**/*'
+            '!bower_components/**/*'
+            'bower_components/bootstrap/dist/css/bootstrap.css'
+            'bower_components/font-awesome/css/font-awesome.css'
+            'bower_components/font-awesome/fonts/**/*'
+            'bower_components/jquery/jquery.js'
+            'bower_components/bootstrap/dist/js/bootstrap.js'
+            'bower_components/angular/angular.js'
+            'bower_components/angular-route/angular-route.js'
+            'bower_components/angular-resource/angular-resource.js'
+            'bower_components/soundmanager/script/soundmanager2.js'
             '!assets/**/*'
             '!scripts/**/*.coffee'
             '!styles/**/*.less'
@@ -258,9 +268,9 @@ module.exports = (grunt) ->
       options:
         build_dir: 'webkitbuilds'
         mac: true
-        win: true
-        linux32: true
-        linux64: true
+        win: false
+        linux32: false
+        linux64: false
       src: [ 'dist/**/*' ]
 
 
